@@ -1,0 +1,14 @@
+procs:
+  rawdata:
+    shell: "echo 'prepare T1Raw & mkdir T1Img' && ls T1Raw|wc -l  && which dcm2niix_linux"
+  conver2nii:
+    shell: "sh convert_nii.sh"
+    autostart: false
+  nii_check:
+    shell: "ls T1Img|wc -l  && du -d 1 T1Img"
+    autostart: false
+  surfer-para_ck:
+    shell: "which recon-all && echo 'mkdir freesurfer && sh para.sh'"
+    autostart: false
+    env:
+      FREESURFER_HOME: "/TJ_APPS/freesurfer"
